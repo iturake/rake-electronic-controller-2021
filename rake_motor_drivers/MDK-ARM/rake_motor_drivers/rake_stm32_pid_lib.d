@@ -34,3 +34,4 @@ rake_motor_drivers\rake_stm32_pid_lib.o: D:\RAKE\rake_stm32_libraries\rake_stm32
 rake_motor_drivers\rake_stm32_pid_lib.o: D:\RAKE\rake_stm32_libraries\rake_stm32_extra_lib.h
 rake_motor_drivers\rake_stm32_pid_lib.o: D:\RAKE\rake_stm32_libraries\rake_stm32_encoder_lib.h
 rake_motor_drivers\rake_stm32_pid_lib.o: D:\RAKE\rake_stm32_libraries\rake_stm32_motor_lib.h
+rake_motor_drivers\rake_stm32_pid_lib.o: D:\RAKE\rake_stm32_libraries\rake_stm32_uart_lib.h
