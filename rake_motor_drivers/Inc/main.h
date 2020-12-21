@@ -48,7 +48,7 @@ extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f0xx_hal.h"
+#include "stm32f1xx_hal.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -80,14 +80,16 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define ENCODER_PIN_1_Pin GPIO_PIN_0
-#define ENCODER_PIN_1_GPIO_Port GPIOA
-#define ENCODER_PIN_2_Pin GPIO_PIN_1
-#define ENCODER_PIN_2_GPIO_Port GPIOA
-#define PWN_CHANNEL_2_Pin GPIO_PIN_7
-#define PWN_CHANNEL_2_GPIO_Port GPIOA
-#define PWM_CHANNEL_3_Pin GPIO_PIN_0
-#define PWM_CHANNEL_3_GPIO_Port GPIOB
+#define MOTOR_BACKWARD_Pin GPIO_PIN_5
+#define MOTOR_BACKWARD_GPIO_Port GPIOA
+#define MOTOR_FORWARD_Pin GPIO_PIN_0
+#define MOTOR_FORWARD_GPIO_Port GPIOB
+#define CLOCK_Pin GPIO_PIN_14
+#define CLOCK_GPIO_Port GPIOB
+#define LATCH_Pin GPIO_PIN_15
+#define LATCH_GPIO_Port GPIOB
+#define DATA_Pin GPIO_PIN_15
+#define DATA_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
