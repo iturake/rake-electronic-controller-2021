@@ -7,9 +7,15 @@ extern "C" {
 
 
 /* Private includes ----------------------------------------------------------*/
-
+#include "stm32f1xx_hal.h"
 
 /* Private structures ----------------------------------------------------------*/
+
+struct encoderStruct {
+	uint32_t counter_u32;
+	_Bool measuredDirection_bool;
+	float measuredSpeed_f32;
+};
 
 
 /* Private functions -----------------------------------------------*/

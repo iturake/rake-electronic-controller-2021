@@ -8,8 +8,23 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 
+#include "stm32f1xx_hal.h"
 
 /* Private structures ----------------------------------------------------------*/
+
+typedef struct motorStruct {
+	uint16_t pwmValue_u16;
+	uint16_t pwmLastValue_u16;
+	_Bool lastDirection_bool;
+	struct {
+		uint16_t PWM_u16;
+		float RPM_f32;
+		_Bool direction;
+	} desired;
+}Motor;
+
+
+
 
 
 

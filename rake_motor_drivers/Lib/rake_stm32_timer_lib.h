@@ -28,7 +28,7 @@ void RAKE_TIM2_Init(void);
 void RAKE_TIM3_Init(void);
 void RAKE_TIM4_Init(void);
 void RAKE_TIM_MspPostInit(TIM_HandleTypeDef* htim);
-void RAKE_Error_Handler(void);
+
 
 
 

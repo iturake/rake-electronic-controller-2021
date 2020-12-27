@@ -45,27 +45,14 @@ enum {
 
 /* Private structures ----------------------------------------------------------*/
 
-struct flagStruct {
-	struct {
-		_Bool motorForward_bit;
-		_Bool motorBackward_bit;
-		_Bool UART_bit;
-		_Bool CANBUS_bit;
-		_Bool adminMode_bit;
-		_Bool testMode_bit;
-		_Bool normalMode_bit;
-		_Bool ERROR_bit;
-	} LED;
-	struct {
-		uint8_t rxIndex_bool;
-		_Bool rxComplete_bool;
-	} UART;
-};
+
+
 
 
 /* Private function prototypes -----------------------------------------------*/
 
 float RAKE_Convert(uint8_t convertMode_u8, float convertingValue_f32);
+void RAKE_Error_Handler(void);
 
 
 

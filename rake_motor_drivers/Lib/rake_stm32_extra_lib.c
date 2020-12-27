@@ -5,7 +5,7 @@
 
 /* Private structures -----------------------------------------------*/
 
-struct flagStruct flag = {{0,0,0,0,0,0,0,0},{0,0}};
+
 
 /* Private variables -----------------------------------------------*/
 
@@ -36,5 +36,12 @@ float RAKE_Convert(uint8_t convertMode_u8, float convertingValue_f32) {
 			break;
 	}
 	return convert_result;
+}
+
+void RAKE_Error_Handler(void) {
+  /* USER CODE BEGIN Error_Handler_Debug */
+  /* User can add his own implementation to report the HAL error return state */
+
+  /* USER CODE END Error_Handler_Debug */
 }
 

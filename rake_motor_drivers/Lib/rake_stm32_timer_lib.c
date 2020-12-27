@@ -2,6 +2,7 @@
 /* Private includes ----------------------------------------------------------*/
 
 #include "rake_stm32_timer_lib.h"
+#include "rake_stm32_extra_lib.h"
 
 
 
@@ -175,12 +176,15 @@ void RAKE_TIM_MspPostInit(TIM_HandleTypeDef* htim)
 
 }
 
-void RAKE_Error_Handler(void)
-{
-  /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
 
-  /* USER CODE END Error_Handler_Debug */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+	if(htim->Instance == TIM4) {
+		timer.slowStartMotor_u16++;
+		timer.communicationUART_u16++;
+		timer.pidCalculator_u16++;
+		timer.velocityCalculator_u16++;
+		timer.ledDriver_u16++;
+	}
 }
 
 
