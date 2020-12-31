@@ -15,6 +15,7 @@ struct timerStruct timer = {0,0,0,0,0,0};
 TIM_HandleTypeDef rake_htim2;
 TIM_HandleTypeDef rake_htim3;
 TIM_HandleTypeDef rake_htim4;
+
 /* Private functions -----------------------------------------------*/
 
 void RAKE_TIM2_Init(void)

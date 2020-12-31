@@ -10,17 +10,22 @@ extern "C" {
 
 #include "stm32f1xx_hal.h"
 
+/* Private variables ----------------------------------------------------------*/
+
+
+
+
 
 /* Private structures ----------------------------------------------------------*/
 
-struct uartStruct {
+typedef struct uartStruct {
 	unsigned char rxData[8];
 	unsigned char txBuffer[30];
 	unsigned char rxBuffer[30];
 	uint16_t txBufferLen;
-};
+}RAKE_UART_HandleTypeDef;
 
-struct flagStruct {
+typedef struct flagStruct {
 	struct {
 		_Bool motorForward_bit;
 		_Bool motorBackward_bit;
@@ -35,7 +40,7 @@ struct flagStruct {
 		uint8_t rxIndex_bool;
 		_Bool rxComplete_bool;
 	} UART;
-};
+}FLAG_HandleTypeDef;
 
 
 
@@ -43,6 +48,8 @@ struct flagStruct {
 /* Private functions -----------------------------------------------*/
 
 void RAKE_USART1_UART_Init(void);
+
+
 
 
 

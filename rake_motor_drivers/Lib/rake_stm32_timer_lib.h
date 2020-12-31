@@ -10,16 +10,20 @@ extern "C" {
 
 #include "stm32f1xx_hal.h"
 
+/* Private variables ----------------------------------------------------------*/
+
+
+
 /* Private structures ----------------------------------------------------------*/
 
-struct timerStruct {
+typedef struct timerStruct {
 	uint16_t velocityCalculator_u16;
 	uint16_t slowStartMotor_u16;
 	uint16_t communicationUART_u16;
 	uint16_t communicationCANBUS_u16;
 	uint16_t ledDriver_u16;
 	uint16_t pidCalculator_u16;
-};
+}TIMER_HandleTypeDef;
 
 
 /* Private function prototypes -----------------------------------------------*/

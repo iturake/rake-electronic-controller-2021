@@ -11,11 +11,11 @@ extern "C" {
 
 /* Private structures ----------------------------------------------------------*/
 
-struct encoderStruct {
+typedef struct encoderStruct {
 	uint32_t counter_u32;
 	_Bool measuredDirection_bool;
 	float measuredSpeed_f32;
-};
+}ENCODER_HandleTypeDef;
 
 
 /* Private functions -----------------------------------------------*/

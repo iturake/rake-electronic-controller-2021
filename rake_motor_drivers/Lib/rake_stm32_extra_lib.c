@@ -15,6 +15,7 @@ uint32_t encoderA_Pin = TIM_CHANNEL_1;
 uint32_t encoderB_Pin = TIM_CHANNEL_2;
 
 
+
 /* Private functions -----------------------------------------------*/
 
 float RAKE_Convert(uint8_t convertMode_u8, float convertingValue_f32) {

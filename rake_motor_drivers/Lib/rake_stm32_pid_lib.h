@@ -12,6 +12,15 @@ extern "C" {
 
 /* Private structures ----------------------------------------------------------*/
 
+struct pidStruct {
+	float error;
+	float lastError;
+	float derivative;
+	float integral;
+	float integralPrev;
+	float output;
+	struct {float kp, kd, ki;} values;
+};
 
 
 /* Private function prototypes -----------------------------------------------*/

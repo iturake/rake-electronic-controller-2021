@@ -10,6 +10,7 @@ extern "C" {
 
 #include "stm32f1xx_hal.h"
 
+
 /* Private structures ----------------------------------------------------------*/
 
 typedef struct motorStruct {
@@ -21,7 +22,7 @@ typedef struct motorStruct {
 		float RPM_f32;
 		_Bool direction;
 	} desired;
-}Motor;
+}MOTOR_HandleTypeDef;
 
 
 
@@ -31,6 +32,7 @@ typedef struct motorStruct {
 
 
 /* Private functions -----------------------------------------------*/
+
 
 
 
