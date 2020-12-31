@@ -29,10 +29,6 @@ extern "C" {
 #define SECOND 1000
 #define MINUTE 60
 
-/* Private pin variables ----------------------------------------------------------*/
-
-
-
 /* Private enums ----------------------------------------------------------*/
 
 enum {
@@ -65,10 +61,6 @@ typedef struct flagStruct {
 
 float RAKE_Convert(uint8_t convertMode_u8, float convertingValue_f32);
 void RAKE_Error_Handler(void);
-
-
-
-
 
 
 #ifdef _cplusplus

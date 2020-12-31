@@ -2,19 +2,16 @@
 /* Private includes ----------------------------------------------------------*/
 
 #include "rake_stm32_timer_lib.h"
-#include "rake_stm32_extra_lib.h"
-
-
-
-/* Private structures -----------------------------------------------*/
-
-struct timerStruct timer = {0,0,0,0,0,0};
 
 /* Private variables -----------------------------------------------*/
 
 TIM_HandleTypeDef rake_htim2;
 TIM_HandleTypeDef rake_htim3;
 TIM_HandleTypeDef rake_htim4;
+
+/* Private structures -----------------------------------------------*/
+
+struct timerStruct timer = {0,0,0,0,0,0};
 
 /* Private functions -----------------------------------------------*/
 
@@ -185,6 +182,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 			timer.velocityCalculator_u16++;
 			timer.ledDriver_u16++;
 		}
-	}
+}
+
+void RAKE(TIM_HandleTypeDef *htim) {
+	UNUSED(htim);
+}
 
 

@@ -2,9 +2,6 @@
 /* Private includes ----------------------------------------------------------*/
 
 #include "rake_stm32_motor_lib.h"
-#include "rake_stm32_extra_lib.h"
-#include "rake_stm32_encoder_lib.h"
-#include "rake_stm32_timer_lib.h"
 
 /* Private variables -----------------------------------------------*/
 
@@ -20,8 +17,6 @@ extern TIM_HandleTypeDef rake_htim4;
 /* Private structures -----------------------------------------------*/
 
 struct motorStruct motor = {0,0,1,{0,0.0,0}};
-
-
 
 /* Private functions -----------------------------------------------*/
 

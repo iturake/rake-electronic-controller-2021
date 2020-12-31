@@ -8,7 +8,11 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 
-
+#include "rake_stm32_timer_lib.h"
+#include "rake_stm32_extra_lib.h"
+#include "rake_stm32_encoder_lib.h" 
+#include "rake_stm32_motor_lib.h"
+#include "rake_stm32_uart_lib.h"
 
 /* Private structures ----------------------------------------------------------*/
 

@@ -9,10 +9,7 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 
 #include "stm32f1xx_hal.h"
-
-/* Private variables ----------------------------------------------------------*/
-
-
+#include "rake_stm32_extra_lib.h"
 
 /* Private structures ----------------------------------------------------------*/
 
@@ -25,13 +22,13 @@ typedef struct timerStruct {
 	uint16_t pidCalculator_u16;
 } TIMER_HandleTypeDef;
 
-
 /* Private function prototypes -----------------------------------------------*/
 
 void RAKE_TIM2_Init(void);
 void RAKE_TIM3_Init(void);
 void RAKE_TIM4_Init(void);
 void RAKE_TIM_MspPostInit(TIM_HandleTypeDef* htim);
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
 
 
 

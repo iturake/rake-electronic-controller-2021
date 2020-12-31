@@ -3,18 +3,12 @@
 
 #include "rake_stm32_extra_lib.h"
 
-/* Private structures -----------------------------------------------*/
-
-
-
 /* Private variables -----------------------------------------------*/
 
-uint32_t motorBackward_Pin = TIM_CHANNEL_1;
-uint32_t motorForward_Pin = TIM_CHANNEL_2;
-uint32_t encoderA_Pin = TIM_CHANNEL_1;
-uint32_t encoderB_Pin = TIM_CHANNEL_2;
-
-
+const uint32_t motorBackward_Pin = TIM_CHANNEL_1;
+const uint32_t motorForward_Pin = TIM_CHANNEL_2;
+const uint32_t encoderA_Pin = TIM_CHANNEL_1;
+const uint32_t encoderB_Pin = TIM_CHANNEL_2;
 
 /* Private functions -----------------------------------------------*/
 

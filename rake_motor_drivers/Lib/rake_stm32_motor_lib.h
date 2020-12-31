@@ -9,7 +9,9 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 
 #include "stm32f1xx_hal.h"
-
+#include "rake_stm32_encoder_lib.h"
+#include "rake_stm32_timer_lib.h"
+#include "rake_stm32_extra_lib.h"
 
 /* Private structures ----------------------------------------------------------*/
 
@@ -25,15 +27,9 @@ typedef struct motorStruct {
 }MOTOR_HandleTypeDef;
 
 
+/* Private function prototypes -----------------------------------------------*/
 
-
-
-
-
-
-/* Private functions -----------------------------------------------*/
-
-
+void RAKE_Drive_Motor(float voltageValue, ENCODER_HandleTypeDef *encoder);
 
 
 

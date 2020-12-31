@@ -9,12 +9,10 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 
 #include "stm32f1xx_hal.h"
-
-/* Private variables ----------------------------------------------------------*/
-
-
-
-
+#include "rake_stm32_motor_lib.h"
+#include "rake_stm32_extra_lib.h"
+#include "rake_stm32_timer_lib.h"
+#include "rake_stm32_encoder_lib.h"
 
 /* Private structures ----------------------------------------------------------*/
 
@@ -25,19 +23,12 @@ typedef struct uartStruct {
 	uint16_t txBufferLen;
 }RAKE_UART_HandleTypeDef;
 
-
-
-/* Private functions -----------------------------------------------*/
+/* Private function prototypes -----------------------------------------------*/
 
 void RAKE_USART1_UART_Init(void);
-
-
-
-
-
-
-
-
+void RAKE_Rx_Motor_Speed(MOTOR_HandleTypeDef *motor, FLAG_HandleTypeDef *flag, RAKE_UART_HandleTypeDef *uart);
+void RAKE_Tx_Motor_Speed(TIMER_HandleTypeDef *timer, ENCODER_HandleTypeDef *encoder);
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
 
 
 

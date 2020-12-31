@@ -2,20 +2,15 @@
 /* Private includes ----------------------------------------------------------*/
 
 #include "rake_stm32_uart_lib.h"
-#include "rake_stm32_extra_lib.h"
-#include "rake_stm32_motor_lib.h"
-#include "rake_stm32_timer_lib.h"
-#include "rake_stm32_encoder_lib.h"
-
-/* Private structures -----------------------------------------------*/
-
-struct uartStruct uart = {0,0,0,0};
-struct flagStruct flag = {{0,0,0,0,0,0,0,0},{0,0}};
 
 /* Private variables -----------------------------------------------*/
 
 UART_HandleTypeDef rake_huart1;
 
+/* Private structures -----------------------------------------------*/
+
+struct uartStruct uart = {0,0,0,0};
+struct flagStruct flag = {{0,0,0,0,0,0,0,0},{0,0}};
 
 /* Private functions -----------------------------------------------*/
 
@@ -97,10 +92,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 		flag.LED.UART_bit = 0;
 	}
 }
-
-
-
-
 
 
 void RAKE_USART1_UART_Init(void)

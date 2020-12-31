@@ -1,6 +1,6 @@
 
 /* Private includes ----------------------------------------------------------*/
-#include "rake_stm32_encoder_lib.h" // Dosyalari *.h dosyasinda cagirinca calismasi lazim diye dusunuyorum
+#include "rake_stm32_encoder_lib.h" 
 
 /* Private structures -----------------------------------------------*/
 
