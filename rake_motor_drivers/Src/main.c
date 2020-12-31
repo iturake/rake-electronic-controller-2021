@@ -43,7 +43,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "rake_stm32_encoder_lib.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -71,7 +71,7 @@ TIM_HandleTypeDef htim4;
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
-
+ENCODER_HandleTypeDef rencoder1;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -83,7 +83,7 @@ static void MX_TIM4_Init(void);
 static void MX_CAN_Init(void);
 static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
-
+static void RAKE_Encoder_Init(void); // Fonksiyon görevi asagida belirtilmistir
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -125,7 +125,7 @@ int main(void)
   MX_CAN_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-
+	RAKE_Encoder_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -135,6 +135,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+		
+		
+		
   }
   /* USER CODE END 3 */
 }
@@ -427,6 +430,12 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+static void RAKE_Encoder_Init(void) {
+	rencoder1.counter_u32 = 0;
+	rencoder1.measuredDirection_bool = 0;
+	rencoder1.measuredSpeed_f32 = 0.0;
+}
 
 /* USER CODE END 4 */
 

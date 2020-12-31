@@ -23,7 +23,7 @@ typedef struct timerStruct {
 	uint16_t communicationCANBUS_u16;
 	uint16_t ledDriver_u16;
 	uint16_t pidCalculator_u16;
-}TIMER_HandleTypeDef;
+} TIMER_HandleTypeDef;
 
 
 /* Private function prototypes -----------------------------------------------*/

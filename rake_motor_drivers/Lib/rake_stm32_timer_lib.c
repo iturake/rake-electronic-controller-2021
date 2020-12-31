@@ -18,7 +18,7 @@ TIM_HandleTypeDef rake_htim4;
 
 /* Private functions -----------------------------------------------*/
 
-void RAKE_TIM2_Init(void)
+void RAKE_TIM2_Init(void)  // bunlari çekmeye gerek var miydi reis bilmiyorum ama is yapar
 {
 
   /* USER CODE BEGIN TIM2_Init 0 */
@@ -177,15 +177,14 @@ void RAKE_TIM_MspPostInit(TIM_HandleTypeDef* htim)
 
 }
 
-
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-	if(htim->Instance == TIM4) {
-		timer.slowStartMotor_u16++;
-		timer.communicationUART_u16++;
-		timer.pidCalculator_u16++;
-		timer.velocityCalculator_u16++;
-		timer.ledDriver_u16++;
+		if(htim->Instance == TIM4) {
+			timer.slowStartMotor_u16++;
+			timer.communicationUART_u16++;
+			timer.pidCalculator_u16++;
+			timer.velocityCalculator_u16++;
+			timer.ledDriver_u16++;
+		}
 	}
-}
 
 

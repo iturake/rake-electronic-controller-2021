@@ -42,12 +42,24 @@ enum {
 	PWM_TO_RPM
 };
 
-
 /* Private structures ----------------------------------------------------------*/
 
-
-
-
+typedef struct flagStruct {
+	struct {
+		_Bool motorForward_bit;
+		_Bool motorBackward_bit;
+		_Bool UART_bit;
+		_Bool CANBUS_bit;
+		_Bool adminMode_bit;
+		_Bool testMode_bit;
+		_Bool normalMode_bit;
+		_Bool ERROR_bit;
+	} LED;
+	struct {
+		uint8_t rxIndex_bool;
+		_Bool rxComplete_bool;
+	} UART;
+} FLAG_HandleTypeDef;
 
 /* Private function prototypes -----------------------------------------------*/
 
