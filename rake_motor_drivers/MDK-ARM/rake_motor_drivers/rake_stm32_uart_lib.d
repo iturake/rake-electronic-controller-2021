@@ -31,3 +31,5 @@ rake_motor_drivers\rake_stm32_uart_lib.o: ..\Lib\rake_stm32_motor_lib.h
 rake_motor_drivers\rake_stm32_uart_lib.o: ..\Lib\rake_stm32_encoder_lib.h
 rake_motor_drivers\rake_stm32_uart_lib.o: ..\Lib\rake_stm32_timer_lib.h
 rake_motor_drivers\rake_stm32_uart_lib.o: ..\Lib\rake_stm32_extra_lib.h
+rake_motor_drivers\rake_stm32_uart_lib.o: ../Inc/main.h
+rake_motor_drivers\rake_stm32_uart_lib.o: ..\Lib\rake_stm32_timer_lib.h

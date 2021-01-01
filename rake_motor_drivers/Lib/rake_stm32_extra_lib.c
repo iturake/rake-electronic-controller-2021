@@ -33,10 +33,30 @@ float RAKE_Convert(uint8_t convertMode_u8, float convertingValue_f32) {
 	return convert_result;
 }
 
+void RAKE_Drive_Led(FLAG_HandleTypeDef *flag, TIMER_HandleTypeDef *timer) {
+	_Bool shiftingData[8] = {flag->LED.motorForward_bit, flag->LED.motorBackward_bit, flag->LED.UART_bit, flag->LED.CANBUS_bit, flag->LED.adminMode_bit, flag->LED.testMode_bit, flag->LED.normalMode_bit, flag->LED.ERROR_bit};
+	if(timer->ledDriver_u16 > LED_TIME) {
+		HAL_GPIO_WritePin(LATCH_GPIO_Port, LATCH_Pin, GPIO_PIN_RESET);
+		
+		//Shift and Write
+		for(uint8_t bitCount = 0; bitCount < 8; bitCount++){
+			HAL_GPIO_WritePin(DATA_GPIO_Port, DATA_Pin, shiftingData[bitCount]);
+			HAL_GPIO_WritePin(CLOCK_GPIO_Port, CLOCK_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(CLOCK_GPIO_Port, CLOCK_Pin, GPIO_PIN_RESET);
+		}
+		
+		HAL_GPIO_WritePin(LATCH_GPIO_Port, LATCH_Pin, GPIO_PIN_SET);
+		timer->ledDriver_u16 = 0;
+	}
+}
+
+
 void RAKE_Error_Handler(void) {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
 
   /* USER CODE END Error_Handler_Debug */
 }
+
+
 

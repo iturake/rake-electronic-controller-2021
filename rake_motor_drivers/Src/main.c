@@ -44,6 +44,10 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "rake_stm32_encoder_lib.h"
+#include "rake_stm32_uart_lib.h"
+#include "rake_stm32_pid_lib.h"
+#include "rake_stm32_motor_lib.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -72,6 +76,10 @@ UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 ENCODER_HandleTypeDef rencoder1;
+RAKE_UART_HandleTypeDef ruart1;
+PID_HandleTypeDef rpid1;
+MOTOR_HandleTypeDef rmotor1;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -83,7 +91,14 @@ static void MX_TIM4_Init(void);
 static void MX_CAN_Init(void);
 static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
-static void RAKE_Encoder_Init(void); // Fonksiyon görevi asagida belirtilmistir
+
+//Bu fonksiyonlarin görevleri asagi kisimda bulunan USER CODE BEGIN 4 kisminda belirtilmistir
+static void RAKE_Encoder_Init(void);          
+static void RAKE_UART_Init(void);
+static void RAKE_PID_Init(void);
+static void RAKE_MOTOR_Init(void);
+
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -435,6 +450,31 @@ static void RAKE_Encoder_Init(void) {
 	rencoder1.counter_u32 = 0;
 	rencoder1.measuredDirection_bool = 0;
 	rencoder1.measuredSpeed_f32 = 0.0;
+}
+
+static void RAKE_UART_Init(void) {
+	ruart1.txBufferLen = 0;
+}
+
+static void RAKE_PID_Init(void) {
+	rpid1.error = 0;
+	rpid1.lastError = 0;
+	rpid1.derivative = 0;
+	rpid1.integral = 0;
+	rpid1.integralPrev = 0;
+	rpid1.output = 0;
+	rpid1.values.kp = 0.032;
+	rpid1.values.kd = 0.0008;
+	rpid1.values.ki = 0.00005;
+}
+
+static void RAKE_MOTOR_Init(void) {
+	rmotor1.pwmValue_u16 = 0;
+	rmotor1.pwmLastValue_u16 = 0;
+	rmotor1.lastDirection_bool = 1;
+	rmotor1.desired.PWM_u16 = 0;
+	rmotor1.desired.RPM_f32 = 0;
+	rmotor1.desired.direction = 0;
 }
 
 /* USER CODE END 4 */

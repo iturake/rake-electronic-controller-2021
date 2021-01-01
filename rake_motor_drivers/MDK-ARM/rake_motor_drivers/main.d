@@ -30,3 +30,7 @@ rake_motor_drivers\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uar
 rake_motor_drivers\main.o: ..\Lib\rake_stm32_encoder_lib.h
 rake_motor_drivers\main.o: ..\Lib\rake_stm32_timer_lib.h
 rake_motor_drivers\main.o: ..\Lib\rake_stm32_extra_lib.h
+rake_motor_drivers\main.o: ..\Lib\rake_stm32_timer_lib.h
+rake_motor_drivers\main.o: ..\Lib\rake_stm32_uart_lib.h
+rake_motor_drivers\main.o: ..\Lib\rake_stm32_motor_lib.h
+rake_motor_drivers\main.o: ..\Lib\rake_stm32_pid_lib.h

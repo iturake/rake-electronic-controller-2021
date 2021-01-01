@@ -16,7 +16,7 @@ extern "C" {
 
 /* Private structures ----------------------------------------------------------*/
 
-struct pidStruct {
+typedef struct pidStruct {
 	float error;
 	float lastError;
 	float derivative;
@@ -24,11 +24,12 @@ struct pidStruct {
 	float integralPrev;
 	float output;
 	struct {float kp, kd, ki;} values;
-};
+} PID_HandleTypeDef;
 
 
 /* Private function prototypes -----------------------------------------------*/
 
+void RAKE_Pid_Calculation(TIMER_HandleTypeDef *timer, ENCODER_HandleTypeDef *encoder, MOTOR_HandleTypeDef *motor, FLAG_HandleTypeDef *flag, RAKE_UART_HandleTypeDef *uart,  PID_HandleTypeDef *PID);
 
 
 

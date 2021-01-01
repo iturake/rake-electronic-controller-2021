@@ -29,8 +29,7 @@ typedef struct motorStruct {
 
 /* Private function prototypes -----------------------------------------------*/
 
-void RAKE_Drive_Motor(float voltageValue, ENCODER_HandleTypeDef *encoder);
-
+void RAKE_Drive_Motor(float voltageValue, ENCODER_HandleTypeDef *encoder, MOTOR_HandleTypeDef *motor);
 
 
 #ifdef _cplusplus

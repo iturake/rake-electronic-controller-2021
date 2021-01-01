@@ -2,10 +2,6 @@
 /* Private includes ----------------------------------------------------------*/
 #include "rake_stm32_encoder_lib.h" 
 
-/* Private structures -----------------------------------------------*/
-
-// struct encoderStruct encoder = {0,0,0.0};  --> Bu kaliplari kullanmaktan kacinalim
-
 /* Private functions -----------------------------------------------*/
 
 void RAKE_Measure_Speed(TIMER_HandleTypeDef *timer, FLAG_HandleTypeDef *flag, ENCODER_HandleTypeDef *encoder){
