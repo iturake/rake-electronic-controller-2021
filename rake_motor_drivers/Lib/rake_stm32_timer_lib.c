@@ -9,10 +9,6 @@ TIM_HandleTypeDef rake_htim2;
 TIM_HandleTypeDef rake_htim3;
 TIM_HandleTypeDef rake_htim4;
 
-/* Private structures -----------------------------------------------*/
-
-struct timerStruct timer = {0,0,0,0,0,0};
-
 /* Private functions -----------------------------------------------*/
 
 void RAKE_TIM2_Init(void)  // bunlari çekmeye gerek var miydi reis bilmiyorum ama is yapar
@@ -174,18 +170,7 @@ void RAKE_TIM_MspPostInit(TIM_HandleTypeDef* htim)
 
 }
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-		if(htim->Instance == TIM4) {
-			timer.slowStartMotor_u16++;
-			timer.communicationUART_u16++;
-			timer.pidCalculator_u16++;
-			timer.velocityCalculator_u16++;
-			timer.ledDriver_u16++;
-		}
-}
 
-void RAKE(TIM_HandleTypeDef *htim) {
-	UNUSED(htim);
-}
+
 
 

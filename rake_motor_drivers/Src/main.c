@@ -47,6 +47,8 @@
 #include "rake_stm32_uart_lib.h"
 #include "rake_stm32_pid_lib.h"
 #include "rake_stm32_motor_lib.h"
+#include "rake_stm32_timer_lib.h"
+
 
 /* USER CODE END Includes */
 
@@ -74,11 +76,17 @@ TIM_HandleTypeDef htim4;
 
 UART_HandleTypeDef huart1;
 
+
 /* USER CODE BEGIN PV */
+
+extern UART_HandleTypeDef rake_huart1;
+
 ENCODER_HandleTypeDef rencoder1;
 RAKE_UART_HandleTypeDef ruart1;
 PID_HandleTypeDef rpid1;
 MOTOR_HandleTypeDef rmotor1;
+TIMER_HandleTypeDef rtimer1;
+FLAG_HandleTypeDef rflag1;
 
 /* USER CODE END PV */
 
@@ -97,6 +105,10 @@ static void RAKE_Encoder_Init(void);
 static void RAKE_UART_Init(void);
 static void RAKE_PID_Init(void);
 static void RAKE_MOTOR_Init(void);
+static void RAKE_TIMER_Init(void);
+static void RAKE_FLAG_Init(void);
+static void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
+static void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
 
 
 /* USER CODE END PFP */
@@ -141,6 +153,11 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 	RAKE_Encoder_Init();
+	RAKE_MOTOR_Init();
+	RAKE_PID_Init();
+	RAKE_UART_Init();
+	RAKE_FLAG_Init();
+	RAKE_TIMER_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -475,6 +492,71 @@ static void RAKE_MOTOR_Init(void) {
 	rmotor1.desired.PWM_u16 = 0;
 	rmotor1.desired.RPM_f32 = 0;
 	rmotor1.desired.direction = 0;
+}
+
+static void RAKE_TIMER_Init(void) {
+	rtimer1.communicationCANBUS_u16 = 0;
+	rtimer1.communicationUART_u16 = 0;
+	rtimer1.ledDriver_u16 = 0;
+	rtimer1.pidCalculator_u16 = 0;
+	rtimer1.slowStartMotor_u16 = 0;
+	rtimer1.velocityCalculator_u16 = 0;
+}
+
+static void RAKE_FLAG_Init(void) {
+	rflag1.LED.adminMode_bit = 0;
+	rflag1.LED.CANBUS_bit = 0;
+	rflag1.LED.ERROR_bit = 0;
+	rflag1.LED.motorBackward_bit = 0;
+	rflag1.LED.motorForward_bit = 0;
+	rflag1.LED.normalMode_bit = 0;
+	rflag1.LED.testMode_bit = 0;
+	rflag1.LED.UART_bit = 0;
+	
+	rflag1.UART.rxComplete_bool = 0;
+	rflag1.UART.rxIndex_bool = 0;
+}
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+		if(htim->Instance == TIM4) {
+			rtimer1.slowStartMotor_u16++;
+			rtimer1.communicationUART_u16++;
+			rtimer1.pidCalculator_u16++;
+			rtimer1.velocityCalculator_u16++;
+			rtimer1.ledDriver_u16++;
+		}
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
+	if(huart->Instance == USART1){
+		rflag1.LED.UART_bit = 1;
+		//----------------------------------------
+		//Reset RX Buffer Code
+		//----------------------------------------
+		if(rflag1.UART.rxIndex_bool == 0) {
+			for(uint8_t index; index < 30; index++) {
+				ruart1.rxBuffer[index] = 0;
+			}
+		}
+		
+		if(ruart1.rxData[0] == 'S') {
+			rflag1.UART.rxIndex_bool = 0;
+		}
+		//----------------------------------------
+		//Write Data to Buffer Code
+		//----------------------------------------
+		if(ruart1.rxData[0] != 'F'){
+			ruart1.rxBuffer[rflag1.UART.rxIndex_bool++] = ruart1.rxData[0];
+		} else {
+			rflag1.UART.rxIndex_bool = 0;
+			rflag1.UART.rxComplete_bool = 1;
+		}
+		//----------------------------------------
+		HAL_UART_Receive_IT(&rake_huart1, ruart1.rxData, 1);
+		//----------------------------------------
+	} else {
+		rflag1.LED.UART_bit = 0;
+	}
 }
 
 /* USER CODE END 4 */

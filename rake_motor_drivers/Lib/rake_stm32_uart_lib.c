@@ -7,11 +7,6 @@
 
 UART_HandleTypeDef rake_huart1;
 
-/* Private structures -----------------------------------------------*/
-
-struct uartStruct uart = {0,0,0,0};
-struct flagStruct flag = {{0,0,0,0,0,0,0,0},{0,0}};
-
 /* Private functions -----------------------------------------------*/
 
 void RAKE_Rx_Motor_Speed(MOTOR_HandleTypeDef *motor, FLAG_HandleTypeDef *flag, RAKE_UART_HandleTypeDef *uart) {
@@ -33,7 +28,7 @@ void RAKE_Rx_Motor_Speed(MOTOR_HandleTypeDef *motor, FLAG_HandleTypeDef *flag, R
 	}
 }
 
-void RAKE_Tx_Motor_Speed(TIMER_HandleTypeDef *timer, ENCODER_HandleTypeDef *encoder) {
+void RAKE_Tx_Motor_Speed(TIMER_HandleTypeDef *timer, ENCODER_HandleTypeDef *encoder, RAKE_UART_HandleTypeDef *uart) {
 	if(timer->communicationUART_u16 > TX_TIME){
 		/*
 			Data Type --> "SavvvCF"
@@ -53,46 +48,13 @@ void RAKE_Tx_Motor_Speed(TIMER_HandleTypeDef *timer, ENCODER_HandleTypeDef *enco
 		ten	= (motorSpeed % 100) / 10;
 		one	= (motorSpeed % 10);
 		
-		uart.txBufferLen = sprintf(uart.txBuffer, "S%d%d%d%dCF",
+		uart->txBufferLen = sprintf(uart->txBuffer, "S%d%d%d%dCF",
 															 motorDirection, hun, ten, one);
 		
-		HAL_UART_Transmit_IT(&rake_huart1, uart.txBuffer, uart.txBufferLen);
+		HAL_UART_Transmit_IT(&rake_huart1, uart->txBuffer, uart->txBufferLen);
 		timer->communicationUART_u16 = 0;
 	}
 }
-
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
-	if(huart->Instance == USART1){
-		flag.LED.UART_bit = 1;
-		//----------------------------------------
-		//Reset RX Buffer Code
-		//----------------------------------------
-		if(flag.UART.rxIndex_bool == 0) {
-			for(uint8_t index; index < 30; index++) {
-				uart.rxBuffer[index] = 0;
-			}
-		}
-		
-		if(uart.rxData[0] == 'S') {
-			flag.UART.rxIndex_bool = 0;
-		}
-		//----------------------------------------
-		//Write Data to Buffer Code
-		//----------------------------------------
-		if(uart.rxData[0] != 'F'){
-			uart.rxBuffer[flag.UART.rxIndex_bool++] = uart.rxData[0];
-		} else {
-			flag.UART.rxIndex_bool = 0;
-			flag.UART.rxComplete_bool = 1;
-		}
-		//----------------------------------------
-		HAL_UART_Receive_IT(&rake_huart1, uart.rxData, 1);
-		//----------------------------------------
-	} else {
-		flag.LED.UART_bit = 0;
-	}
-}
-
 
 void RAKE_USART1_UART_Init(void)
 {

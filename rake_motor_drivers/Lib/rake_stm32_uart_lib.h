@@ -27,8 +27,7 @@ typedef struct uartStruct {
 
 void RAKE_USART1_UART_Init(void);
 void RAKE_Rx_Motor_Speed(MOTOR_HandleTypeDef *motor, FLAG_HandleTypeDef *flag, RAKE_UART_HandleTypeDef *uart);
-void RAKE_Tx_Motor_Speed(TIMER_HandleTypeDef *timer, ENCODER_HandleTypeDef *encoder);
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
+void RAKE_Tx_Motor_Speed(TIMER_HandleTypeDef *timer, ENCODER_HandleTypeDef *encoder, RAKE_UART_HandleTypeDef *uart);
 
 
 
