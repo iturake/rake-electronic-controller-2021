@@ -32,8 +32,6 @@ typedef struct pidStruct {
 void RAKE_Pid_Calculation(TIMER_HandleTypeDef *timer, ENCODER_HandleTypeDef *encoder, MOTOR_HandleTypeDef *motor, FLAG_HandleTypeDef *flag, RAKE_UART_HandleTypeDef *uart,  PID_HandleTypeDef *PID);
 
 
-
-
 #ifdef _cplusplus
   }
 #endif

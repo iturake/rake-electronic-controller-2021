@@ -31,11 +31,11 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x5FF0670E)
-I (..\Lib\rake_stm32_timer_lib.h)(0x5FF08082)
-I (..\Lib\rake_stm32_extra_lib.h)(0x5FF0670E)
+I (..\Lib\rake_stm32_timer_lib.h)(0x5FF1E7D9)
+I (..\Lib\rake_stm32_extra_lib.h)(0x5FF2290E)
 I (../Inc/main.h)(0x5FF0670E)
 F (..\Lib\rake_stm32_extra_lib.c)(0x5FF0670E)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Lib-I.\RTE\_rake_motor_drivers-ID:\Kailpacks\ARM\CMSIS\5.6.0\CMSIS\Core\Include-ID:\Kailpacks\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o rake_motor_drivers\rake_stm32_extra_lib.o --omf_browse rake_motor_drivers\rake_stm32_extra_lib.crf --depend rake_motor_drivers\rake_stm32_extra_lib.d)
-I (..\Lib\rake_stm32_extra_lib.h)(0x5FF0670E)
+I (..\Lib\rake_stm32_extra_lib.h)(0x5FF2290E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5FF0670E)
 I (../Inc/stm32f1xx_hal_conf.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x5FF0670E)
@@ -63,8 +63,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x5FF0670E)
 I (../Inc/main.h)(0x5FF0670E)
-I (..\Lib\rake_stm32_timer_lib.h)(0x5FF08082)
-F (..\Lib\rake_stm32_motor_lib.c)(0x5FF0670E)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Lib-I.\RTE\_rake_motor_drivers-ID:\Kailpacks\ARM\CMSIS\5.6.0\CMSIS\Core\Include-ID:\Kailpacks\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o rake_motor_drivers\rake_stm32_motor_lib.o --omf_browse rake_motor_drivers\rake_stm32_motor_lib.crf --depend rake_motor_drivers\rake_stm32_motor_lib.d)
+I (..\Lib\rake_stm32_timer_lib.h)(0x5FF1E7D9)
+F (..\Lib\rake_stm32_motor_lib.c)(0x5FF1E7CA)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Lib-I.\RTE\_rake_motor_drivers-ID:\Kailpacks\ARM\CMSIS\5.6.0\CMSIS\Core\Include-ID:\Kailpacks\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o rake_motor_drivers\rake_stm32_motor_lib.o --omf_browse rake_motor_drivers\rake_stm32_motor_lib.crf --depend rake_motor_drivers\rake_stm32_motor_lib.d)
 I (..\Lib\rake_stm32_motor_lib.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5FF0670E)
 I (../Inc/stm32f1xx_hal_conf.h)(0x5FF0670E)
@@ -93,12 +93,12 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x5FF0670E)
 I (..\Lib\rake_stm32_encoder_lib.h)(0x5FF0670E)
-I (..\Lib\rake_stm32_timer_lib.h)(0x5FF08082)
-I (..\Lib\rake_stm32_extra_lib.h)(0x5FF0670E)
+I (..\Lib\rake_stm32_timer_lib.h)(0x5FF1E7D9)
+I (..\Lib\rake_stm32_extra_lib.h)(0x5FF2290E)
 I (../Inc/main.h)(0x5FF0670E)
 F (..\Lib\rake_stm32_pid_lib.c)(0x5FF0670E)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Lib-I.\RTE\_rake_motor_drivers-ID:\Kailpacks\ARM\CMSIS\5.6.0\CMSIS\Core\Include-ID:\Kailpacks\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o rake_motor_drivers\rake_stm32_pid_lib.o --omf_browse rake_motor_drivers\rake_stm32_pid_lib.crf --depend rake_motor_drivers\rake_stm32_pid_lib.d)
-I (..\Lib\rake_stm32_pid_lib.h)(0x5FF0670E)
-I (..\Lib\rake_stm32_timer_lib.h)(0x5FF08082)
+I (..\Lib\rake_stm32_pid_lib.h)(0x5FF1E6DA)
+I (..\Lib\rake_stm32_timer_lib.h)(0x5FF1E7D9)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5FF0670E)
 I (../Inc/stm32f1xx_hal_conf.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x5FF0670E)
@@ -125,13 +125,13 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x5FF0670E)
-I (..\Lib\rake_stm32_extra_lib.h)(0x5FF0670E)
+I (..\Lib\rake_stm32_extra_lib.h)(0x5FF2290E)
 I (../Inc/main.h)(0x5FF0670E)
 I (..\Lib\rake_stm32_encoder_lib.h)(0x5FF0670E)
 I (..\Lib\rake_stm32_motor_lib.h)(0x5FF0670E)
-I (..\Lib\rake_stm32_uart_lib.h)(0x5FF083A6)
-F (..\Lib\rake_stm32_timer_lib.c)(0x5FF08082)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Lib-I.\RTE\_rake_motor_drivers-ID:\Kailpacks\ARM\CMSIS\5.6.0\CMSIS\Core\Include-ID:\Kailpacks\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o rake_motor_drivers\rake_stm32_timer_lib.o --omf_browse rake_motor_drivers\rake_stm32_timer_lib.crf --depend rake_motor_drivers\rake_stm32_timer_lib.d)
-I (..\Lib\rake_stm32_timer_lib.h)(0x5FF08082)
+I (..\Lib\rake_stm32_uart_lib.h)(0x5FF1E6DA)
+F (..\Lib\rake_stm32_timer_lib.c)(0x5FF1E7C9)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Lib-I.\RTE\_rake_motor_drivers-ID:\Kailpacks\ARM\CMSIS\5.6.0\CMSIS\Core\Include-ID:\Kailpacks\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o rake_motor_drivers\rake_stm32_timer_lib.o --omf_browse rake_motor_drivers\rake_stm32_timer_lib.crf --depend rake_motor_drivers\rake_stm32_timer_lib.d)
+I (..\Lib\rake_stm32_timer_lib.h)(0x5FF1E7D9)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5FF0670E)
 I (../Inc/stm32f1xx_hal_conf.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x5FF0670E)
@@ -158,10 +158,10 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x5FF0670E)
-I (..\Lib\rake_stm32_extra_lib.h)(0x5FF0670E)
+I (..\Lib\rake_stm32_extra_lib.h)(0x5FF2290E)
 I (../Inc/main.h)(0x5FF0670E)
-F (..\Lib\rake_stm32_uart_lib.c)(0x5FF083A6)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Lib-I.\RTE\_rake_motor_drivers-ID:\Kailpacks\ARM\CMSIS\5.6.0\CMSIS\Core\Include-ID:\Kailpacks\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o rake_motor_drivers\rake_stm32_uart_lib.o --omf_browse rake_motor_drivers\rake_stm32_uart_lib.crf --depend rake_motor_drivers\rake_stm32_uart_lib.d)
-I (..\Lib\rake_stm32_uart_lib.h)(0x5FF083A6)
+F (..\Lib\rake_stm32_uart_lib.c)(0x5FF1E6DA)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Lib-I.\RTE\_rake_motor_drivers-ID:\Kailpacks\ARM\CMSIS\5.6.0\CMSIS\Core\Include-ID:\Kailpacks\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o rake_motor_drivers\rake_stm32_uart_lib.o --omf_browse rake_motor_drivers\rake_stm32_uart_lib.crf --depend rake_motor_drivers\rake_stm32_uart_lib.d)
+I (..\Lib\rake_stm32_uart_lib.h)(0x5FF1E6DA)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5FF0670E)
 I (../Inc/stm32f1xx_hal_conf.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x5FF0670E)
@@ -190,10 +190,10 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x5FF0670E)
 I (..\Lib\rake_stm32_motor_lib.h)(0x5FF0670E)
 I (..\Lib\rake_stm32_encoder_lib.h)(0x5FF0670E)
-I (..\Lib\rake_stm32_timer_lib.h)(0x5FF08082)
-I (..\Lib\rake_stm32_extra_lib.h)(0x5FF0670E)
+I (..\Lib\rake_stm32_timer_lib.h)(0x5FF1E7D9)
+I (..\Lib\rake_stm32_extra_lib.h)(0x5FF2290E)
 I (../Inc/main.h)(0x5FF0670E)
-F (../Src/main.c)(0x5FF08406)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Lib-I.\RTE\_rake_motor_drivers-ID:\Kailpacks\ARM\CMSIS\5.6.0\CMSIS\Core\Include-ID:\Kailpacks\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o rake_motor_drivers\main.o --omf_browse rake_motor_drivers\main.crf --depend rake_motor_drivers\main.d)
+F (../Src/main.c)(0x5FF22931)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Lib-I.\RTE\_rake_motor_drivers-ID:\Kailpacks\ARM\CMSIS\5.6.0\CMSIS\Core\Include-ID:\Kailpacks\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o rake_motor_drivers\main.o --omf_browse rake_motor_drivers\main.crf --depend rake_motor_drivers\main.d)
 I (../Inc/main.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5FF0670E)
 I (../Inc/stm32f1xx_hal_conf.h)(0x5FF0670E)
@@ -222,11 +222,11 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x5FF0670E)
 I (..\Lib\rake_stm32_encoder_lib.h)(0x5FF0670E)
-I (..\Lib\rake_stm32_timer_lib.h)(0x5FF08082)
-I (..\Lib\rake_stm32_extra_lib.h)(0x5FF0670E)
-I (..\Lib\rake_stm32_uart_lib.h)(0x5FF083A6)
+I (..\Lib\rake_stm32_timer_lib.h)(0x5FF1E7D9)
+I (..\Lib\rake_stm32_extra_lib.h)(0x5FF2290E)
+I (..\Lib\rake_stm32_uart_lib.h)(0x5FF1E6DA)
 I (..\Lib\rake_stm32_motor_lib.h)(0x5FF0670E)
-I (..\Lib\rake_stm32_pid_lib.h)(0x5FF0670E)
+I (..\Lib\rake_stm32_pid_lib.h)(0x5FF1E6DA)
 F (../Src/stm32f1xx_it.c)(0x5FF0670E)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Lib-I.\RTE\_rake_motor_drivers-ID:\Kailpacks\ARM\CMSIS\5.6.0\CMSIS\Core\Include-ID:\Kailpacks\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o rake_motor_drivers\stm32f1xx_it.o --omf_browse rake_motor_drivers\stm32f1xx_it.crf --depend rake_motor_drivers\stm32f1xx_it.d)
 I (../Inc/main.h)(0x5FF0670E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5FF0670E)

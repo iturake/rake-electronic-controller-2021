@@ -43,12 +43,13 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
 #include "rake_stm32_encoder_lib.h"
 #include "rake_stm32_uart_lib.h"
 #include "rake_stm32_pid_lib.h"
 #include "rake_stm32_motor_lib.h"
 #include "rake_stm32_timer_lib.h"
-
+#include "rake_stm32_extra_lib.h"
 
 /* USER CODE END Includes */
 
@@ -68,6 +69,12 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+
+extern const uint32_t motorBackward_Pin;
+extern const uint32_t motorForward_Pin;
+extern const uint32_t encoderA_Pin;
+extern const uint32_t encoderB_Pin;
+
 CAN_HandleTypeDef hcan;
 
 TIM_HandleTypeDef htim2;
@@ -78,8 +85,6 @@ UART_HandleTypeDef huart1;
 
 
 /* USER CODE BEGIN PV */
-
-extern UART_HandleTypeDef rake_huart1;
 
 ENCODER_HandleTypeDef rencoder1;
 RAKE_UART_HandleTypeDef ruart1;
@@ -107,6 +112,8 @@ static void RAKE_PID_Init(void);
 static void RAKE_MOTOR_Init(void);
 static void RAKE_TIMER_Init(void);
 static void RAKE_FLAG_Init(void);
+static void RAKE_INIT_Functions(void);
+static void RAKE_START_It(RAKE_UART_HandleTypeDef *uart);
 static void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
 static void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
 
@@ -152,12 +159,7 @@ int main(void)
   MX_CAN_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-	RAKE_Encoder_Init();
-	RAKE_MOTOR_Init();
-	RAKE_PID_Init();
-	RAKE_UART_Init();
-	RAKE_FLAG_Init();
-	RAKE_TIMER_Init();
+	RAKE_INIT_Functions();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -168,6 +170,16 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 		
+		RAKE_Rx_Motor_Speed(&rmotor1, &rflag1, &ruart1);
+		RAKE_Measure_Speed(&rtimer1, &rflag1, &rencoder1);
+		if(rmotor1.desired.RPM_f32 < 1) {
+			__HAL_TIM_SET_COMPARE(&htim3, motorBackward_Pin, 0);
+			__HAL_TIM_SET_COMPARE(&htim3, motorForward_Pin, 0);
+		} else {
+			RAKE_Pid_Calculation(&rtimer1, &rencoder1, &rmotor1,&rflag1, &ruart1, &rpid1);
+		}
+		RAKE_Tx_Motor_Speed(&rtimer1, &rencoder1, &ruart1);
+		//RAKE_Drive_Led();
 		
 		
   }
@@ -517,6 +529,28 @@ static void RAKE_FLAG_Init(void) {
 	rflag1.UART.rxIndex_bool = 0;
 }
 
+static void RAKE_START_It(RAKE_UART_HandleTypeDef *uart) {
+	HAL_TIM_PWM_Start_IT(&htim3, MOTOR_BACKWARD_Pin);
+	HAL_TIM_PWM_Start_IT(&htim3, MOTOR_FORWARD_Pin);
+	
+	HAL_TIM_Encoder_Start_IT(&htim2, encoderA_Pin);
+	HAL_TIM_Encoder_Start_IT(&htim2, encoderB_Pin);
+	
+	HAL_TIM_Base_Start_IT(&htim4);
+	
+	HAL_UART_Receive_IT(&huart1, uart->rxData, 1);
+}
+
+static void RAKE_INIT_Functions(void) {
+	RAKE_Encoder_Init();
+	RAKE_MOTOR_Init();
+	RAKE_PID_Init();
+	RAKE_UART_Init();
+	RAKE_FLAG_Init();
+	RAKE_TIMER_Init();
+	RAKE_START_It(&ruart1);
+}
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 		if(htim->Instance == TIM4) {
 			rtimer1.slowStartMotor_u16++;
@@ -552,7 +586,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 			rflag1.UART.rxComplete_bool = 1;
 		}
 		//----------------------------------------
-		HAL_UART_Receive_IT(&rake_huart1, ruart1.rxData, 1);
+		HAL_UART_Receive_IT(&huart1, ruart1.rxData, 1);
 		//----------------------------------------
 	} else {
 		rflag1.LED.UART_bit = 0;

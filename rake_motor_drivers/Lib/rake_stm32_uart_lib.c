@@ -5,7 +5,7 @@
 
 /* Private variables -----------------------------------------------*/
 
-UART_HandleTypeDef rake_huart1;
+extern UART_HandleTypeDef huart1;
 
 /* Private functions -----------------------------------------------*/
 
@@ -51,38 +51,11 @@ void RAKE_Tx_Motor_Speed(TIMER_HandleTypeDef *timer, ENCODER_HandleTypeDef *enco
 		uart->txBufferLen = sprintf(uart->txBuffer, "S%d%d%d%dCF",
 															 motorDirection, hun, ten, one);
 		
-		HAL_UART_Transmit_IT(&rake_huart1, uart->txBuffer, uart->txBufferLen);
+		HAL_UART_Transmit_IT(&huart1, uart->txBuffer, uart->txBufferLen);
 		timer->communicationUART_u16 = 0;
 	}
 }
 
-void RAKE_USART1_UART_Init(void)
-{
-
-  /* USER CODE BEGIN USART1_Init 0 */
-
-  /* USER CODE END USART1_Init 0 */
-
-  /* USER CODE BEGIN USART1_Init 1 */
-
-  /* USER CODE END USART1_Init 1 */
-  rake_huart1.Instance = USART1;
-  rake_huart1.Init.BaudRate = 115200;
-  rake_huart1.Init.WordLength = UART_WORDLENGTH_8B;
-  rake_huart1.Init.StopBits = UART_STOPBITS_1;
-  rake_huart1.Init.Parity = UART_PARITY_NONE;
-  rake_huart1.Init.Mode = UART_MODE_TX_RX;
-  rake_huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  rake_huart1.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&rake_huart1) != HAL_OK)
-  {
-    RAKE_Error_Handler();
-  }
-  /* USER CODE BEGIN USART1_Init 2 */
-
-  /* USER CODE END USART1_Init 2 */
-
-}
 
 
 

@@ -10,9 +10,8 @@ extern uint32_t motorForward_Pin;
 extern uint32_t encoderA_Pin; 
 extern uint32_t encoderB_Pin; 
 
-extern TIM_HandleTypeDef rake_htim2;
-extern TIM_HandleTypeDef rake_htim3;
-extern TIM_HandleTypeDef rake_htim4;
+extern TIM_HandleTypeDef htim3;
+
 
 /* Private functions -----------------------------------------------*/
 
@@ -24,7 +23,7 @@ void RAKE_Drive_Motor(float voltageValue, ENCODER_HandleTypeDef *encoder, MOTOR_
 		//HAL_GPIO_WritePin(motorForwardEnable_GPIO_Port, motorForwardEnable_Pin, 0);
 		if(motor->desired.direction != encoder->measuredDirection_bool) {
 		for(int a = motor->pwmValue_u16 ; a > 0; a -= 3)  {
-			__HAL_TIM_SET_COMPARE(&rake_htim3, motorForward_Pin, a);
+			__HAL_TIM_SET_COMPARE(&htim3, motorForward_Pin, a);
 			HAL_Delay(1);
 		}
 	}
@@ -34,13 +33,13 @@ void RAKE_Drive_Motor(float voltageValue, ENCODER_HandleTypeDef *encoder, MOTOR_
 		//HAL_GPIO_WritePin(motorForwardEnable_GPIO_Port, motorForwardEnable_Pin, 1);
 		if(motor->desired.direction != encoder->measuredDirection_bool) {
 		for(int a = motor->pwmValue_u16 ; a > 0; a -= 3)  {
-			__HAL_TIM_SET_COMPARE(&rake_htim3, motorBackward_Pin, a);
+			__HAL_TIM_SET_COMPARE(&htim3, motorBackward_Pin, a);
 			HAL_Delay(1);
 		}
 	}
 		motorPin = motorForward_Pin;
 	}
 	
-	__HAL_TIM_SET_COMPARE(&rake_htim3, motorBackward_Pin, motor->pwmValue_u16);
+	__HAL_TIM_SET_COMPARE(&htim3, motorBackward_Pin, motor->pwmValue_u16);
 	motor->pwmLastValue_u16 = motor->pwmValue_u16;
 }
