@@ -3,11 +3,16 @@
 
 #include "rake_stm32_uart_lib.h"
 
-/* Private variables -----------------------------------------------*/
+/* Extern variables -----------------------------------------------*/
 
 extern UART_HandleTypeDef huart1;
+extern RAKE_UART_HandleTypeDef ruart1;
 
 /* Private functions -----------------------------------------------*/
+
+void RAKE_UART_Init(void) {
+	ruart1.txBufferLen = 0;
+}
 
 void RAKE_Rx_Motor_Speed(MOTOR_HandleTypeDef *motor, FLAG_HandleTypeDef *flag, RAKE_UART_HandleTypeDef *uart) {
 	if(flag->UART.rxComplete_bool == 1) {

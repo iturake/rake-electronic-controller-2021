@@ -10,7 +10,25 @@ const uint32_t motorForward_Pin = TIM_CHANNEL_2;
 const uint32_t encoderA_Pin = TIM_CHANNEL_1;
 const uint32_t encoderB_Pin = TIM_CHANNEL_2;
 
+/* Extern variables -----------------------------------------------*/
+
+extern FLAG_HandleTypeDef rflag1;
+
 /* Private functions -----------------------------------------------*/
+
+void RAKE_FLAG_Init(void) {
+	rflag1.LED.adminMode_bit = 0;
+	rflag1.LED.CANBUS_bit = 0;
+	rflag1.LED.ERROR_bit = 0;
+	rflag1.LED.motorBackward_bit = 0;
+	rflag1.LED.motorForward_bit = 0;
+	rflag1.LED.normalMode_bit = 0;
+	rflag1.LED.testMode_bit = 0;
+	rflag1.LED.UART_bit = 0;
+	
+	rflag1.UART.rxComplete_bool = 0;
+	rflag1.UART.rxIndex_bool = 0;
+}
 
 float RAKE_Convert(uint8_t convertMode_u8, float convertingValue_f32) {
 	

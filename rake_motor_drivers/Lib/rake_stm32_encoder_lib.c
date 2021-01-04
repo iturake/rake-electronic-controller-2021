@@ -1,8 +1,20 @@
 
 /* Private includes ----------------------------------------------------------*/
-#include "rake_stm32_encoder_lib.h" 
+#include "rake_stm32_encoder_lib.h"
+
+
+/* Extern structures -----------------------------------------------*/
+
+extern ENCODER_HandleTypeDef rencoder1;
 
 /* Private functions -----------------------------------------------*/
+
+void RAKE_ENCODER_Init(void) {
+	rencoder1.counter_u32 = 0;
+	rencoder1.measuredDirection_bool = 0;
+	rencoder1.measuredSpeed_f32 = 0.0;
+}
+
 
 void RAKE_Measure_Speed(TIMER_HandleTypeDef *timer, FLAG_HandleTypeDef *flag, ENCODER_HandleTypeDef *encoder){
 	if(TIM2->CR1 == 1) {

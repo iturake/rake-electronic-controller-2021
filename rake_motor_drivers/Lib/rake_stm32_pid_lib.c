@@ -3,7 +3,23 @@
 
 #include "rake_stm32_pid_lib.h"
 
+/* Extern structures -----------------------------------------------*/
+
+extern PID_HandleTypeDef rpid1;
+
 /* Private functions -----------------------------------------------*/
+
+void RAKE_PID_Init(void) {
+	rpid1.error = 0;
+	rpid1.lastError = 0;
+	rpid1.derivative = 0;
+	rpid1.integral = 0;
+	rpid1.integralPrev = 0;
+	rpid1.output = 0;
+	rpid1.values.kp = 0.032;
+	rpid1.values.kd = 0.0008;
+	rpid1.values.ki = 0.00005;
+}
 
 void RAKE_Pid_Calculation(TIMER_HandleTypeDef *timer, ENCODER_HandleTypeDef *encoder, MOTOR_HandleTypeDef *motor, FLAG_HandleTypeDef *flag, RAKE_UART_HandleTypeDef *uart, PID_HandleTypeDef *PID) {
 	if(timer->pidCalculator_u16 > PID_TIME) {

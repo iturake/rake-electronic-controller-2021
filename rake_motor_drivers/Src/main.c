@@ -106,17 +106,11 @@ static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 //Bu fonksiyonlarin görevleri asagi kisimda bulunan USER CODE BEGIN 4 kisminda belirtilmistir
-static void RAKE_Encoder_Init(void);          
-static void RAKE_UART_Init(void);
-static void RAKE_PID_Init(void);
-static void RAKE_MOTOR_Init(void);
-static void RAKE_TIMER_Init(void);
-static void RAKE_FLAG_Init(void);
+
 static void RAKE_INIT_Functions(void);
 static void RAKE_START_It(RAKE_UART_HandleTypeDef *uart);
 static void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
 static void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
-
 
 /* USER CODE END PFP */
 
@@ -160,6 +154,7 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 	RAKE_INIT_Functions();
+	RAKE_START_It(&ruart1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -475,60 +470,6 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-static void RAKE_Encoder_Init(void) {
-	rencoder1.counter_u32 = 0;
-	rencoder1.measuredDirection_bool = 0;
-	rencoder1.measuredSpeed_f32 = 0.0;
-}
-
-static void RAKE_UART_Init(void) {
-	ruart1.txBufferLen = 0;
-}
-
-static void RAKE_PID_Init(void) {
-	rpid1.error = 0;
-	rpid1.lastError = 0;
-	rpid1.derivative = 0;
-	rpid1.integral = 0;
-	rpid1.integralPrev = 0;
-	rpid1.output = 0;
-	rpid1.values.kp = 0.032;
-	rpid1.values.kd = 0.0008;
-	rpid1.values.ki = 0.00005;
-}
-
-static void RAKE_MOTOR_Init(void) {
-	rmotor1.pwmValue_u16 = 0;
-	rmotor1.pwmLastValue_u16 = 0;
-	rmotor1.lastDirection_bool = 1;
-	rmotor1.desired.PWM_u16 = 0;
-	rmotor1.desired.RPM_f32 = 0;
-	rmotor1.desired.direction = 0;
-}
-
-static void RAKE_TIMER_Init(void) {
-	rtimer1.communicationCANBUS_u16 = 0;
-	rtimer1.communicationUART_u16 = 0;
-	rtimer1.ledDriver_u16 = 0;
-	rtimer1.pidCalculator_u16 = 0;
-	rtimer1.slowStartMotor_u16 = 0;
-	rtimer1.velocityCalculator_u16 = 0;
-}
-
-static void RAKE_FLAG_Init(void) {
-	rflag1.LED.adminMode_bit = 0;
-	rflag1.LED.CANBUS_bit = 0;
-	rflag1.LED.ERROR_bit = 0;
-	rflag1.LED.motorBackward_bit = 0;
-	rflag1.LED.motorForward_bit = 0;
-	rflag1.LED.normalMode_bit = 0;
-	rflag1.LED.testMode_bit = 0;
-	rflag1.LED.UART_bit = 0;
-	
-	rflag1.UART.rxComplete_bool = 0;
-	rflag1.UART.rxIndex_bool = 0;
-}
-
 static void RAKE_START_It(RAKE_UART_HandleTypeDef *uart) {
 	HAL_TIM_PWM_Start_IT(&htim3, MOTOR_BACKWARD_Pin);
 	HAL_TIM_PWM_Start_IT(&htim3, MOTOR_FORWARD_Pin);
@@ -542,7 +483,7 @@ static void RAKE_START_It(RAKE_UART_HandleTypeDef *uart) {
 }
 
 static void RAKE_INIT_Functions(void) {
-	RAKE_Encoder_Init();
+	RAKE_ENCODER_Init();
 	RAKE_MOTOR_Init();
 	RAKE_PID_Init();
 	RAKE_UART_Init();

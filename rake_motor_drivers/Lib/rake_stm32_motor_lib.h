@@ -29,6 +29,7 @@ typedef struct motorStruct {
 
 /* Private function prototypes -----------------------------------------------*/
 
+void RAKE_MOTOR_Init(void);
 void RAKE_Drive_Motor(float voltageValue, ENCODER_HandleTypeDef *encoder, MOTOR_HandleTypeDef *motor);
 
 

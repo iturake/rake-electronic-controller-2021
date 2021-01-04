@@ -3,7 +3,7 @@
 
 #include "rake_stm32_motor_lib.h"
 
-/* Private variables -----------------------------------------------*/
+/* Extern variables -----------------------------------------------*/
 
 extern uint32_t motorBackward_Pin;
 extern uint32_t motorForward_Pin;
@@ -12,8 +12,19 @@ extern uint32_t encoderB_Pin;
 
 extern TIM_HandleTypeDef htim3;
 
+extern MOTOR_HandleTypeDef rmotor1;
+
 
 /* Private functions -----------------------------------------------*/
+
+void RAKE_MOTOR_Init(void) {
+	rmotor1.pwmValue_u16 = 0;
+	rmotor1.pwmLastValue_u16 = 0;
+	rmotor1.lastDirection_bool = 1;
+	rmotor1.desired.PWM_u16 = 0;
+	rmotor1.desired.RPM_f32 = 0;
+	rmotor1.desired.direction = 0;
+}
 
 void RAKE_Drive_Motor(float voltageValue, ENCODER_HandleTypeDef *encoder, MOTOR_HandleTypeDef *motor) {
 	motor->pwmValue_u16 = (int)RAKE_Convert(VOLTAGE_TO_PWM, voltageValue);

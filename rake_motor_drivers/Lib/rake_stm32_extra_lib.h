@@ -63,6 +63,7 @@ typedef struct flagStruct {
 
 /* Private function prototypes -----------------------------------------------*/
 
+void RAKE_FLAG_Init(void) ;
 float RAKE_Convert(uint8_t convertMode_u8, float convertingValue_f32);
 void RAKE_Error_Handler(void);
 

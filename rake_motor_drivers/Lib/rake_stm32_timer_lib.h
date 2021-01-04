@@ -24,8 +24,7 @@ typedef struct timerStruct {
 
 /* Private function prototypes -----------------------------------------------*/
 
-
-
+void RAKE_TIMER_Init(void);
 
 #ifdef _cplusplus
   }

@@ -22,6 +22,7 @@ typedef struct encoderStruct {
 
 /* Private function prototypes -----------------------------------------------*/
 
+void RAKE_ENCODER_Init(void);
 void RAKE_Measure_Speed(TIMER_HandleTypeDef *timer, FLAG_HandleTypeDef *flag, ENCODER_HandleTypeDef *encoder);
 
 #ifdef _cplusplus
