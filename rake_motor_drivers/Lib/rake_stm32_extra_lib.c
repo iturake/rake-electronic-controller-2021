@@ -5,6 +5,7 @@
 
 /* Private variables -----------------------------------------------*/
 
+// Pin degerleri degistirilmeyecegi icin const olarak tanimlandi .
 const uint32_t motorBackward_Pin = TIM_CHANNEL_1;
 const uint32_t motorForward_Pin = TIM_CHANNEL_2;
 const uint32_t encoderA_Pin = TIM_CHANNEL_1;
@@ -12,10 +13,12 @@ const uint32_t encoderB_Pin = TIM_CHANNEL_2;
 
 /* Extern variables -----------------------------------------------*/
 
+// main.c içindeki typedef bu dosyada kullanilmak üzere extern edildi .
 extern FLAG_HandleTypeDef rflag1;
 
 /* Private functions -----------------------------------------------*/
 
+// Flag structtaki degiskenlere deger atama islemi burada yapildi .
 void RAKE_FLAG_Init(void) {
 	rflag1.LED.adminMode_bit = 0;
 	rflag1.LED.CANBUS_bit = 0;
@@ -30,6 +33,7 @@ void RAKE_FLAG_Init(void) {
 	rflag1.UART.rxIndex_bool = 0;
 }
 
+// Tip dönüsüpleri yapma islemi bu fonksiyon ile yapildi .
 float RAKE_Convert(uint8_t convertMode_u8, float convertingValue_f32) {
 	
 	uint32_t convert_result ;
@@ -51,6 +55,7 @@ float RAKE_Convert(uint8_t convertMode_u8, float convertingValue_f32) {
 	return convert_result;
 }
 
+// Ledlerin sürülme islemi bu fonksiyon ile yapildi .
 void RAKE_Drive_Led(FLAG_HandleTypeDef *flag, TIMER_HandleTypeDef *timer) {
 	_Bool shiftingData[8] = {flag->LED.motorForward_bit, flag->LED.motorBackward_bit, flag->LED.UART_bit, flag->LED.CANBUS_bit, flag->LED.adminMode_bit, flag->LED.testMode_bit, flag->LED.normalMode_bit, flag->LED.ERROR_bit};
 	if(timer->ledDriver_u16 > LED_TIME) {

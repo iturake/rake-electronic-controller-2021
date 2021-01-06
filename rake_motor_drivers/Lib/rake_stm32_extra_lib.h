@@ -9,11 +9,12 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 
 #include "stm32f1xx_hal.h"
-#include "main.h"
+#include "main.h"                        // CubeMx tarafindan yapilan definelara ulasmak için include edildi .
 #include "rake_stm32_timer_lib.h"
 
 /* Private defines ----------------------------------------------------------*/
 
+// Ileride degismeyecek degerler burada define olarak tanimlandi .
 #define GEAR_RATIO 1
 #define ENCODER_PULS 720
 
@@ -66,6 +67,7 @@ typedef struct flagStruct {
 void RAKE_FLAG_Init(void) ;
 float RAKE_Convert(uint8_t convertMode_u8, float convertingValue_f32);
 void RAKE_Error_Handler(void);
+// void RAKE_Drive_Led(FLAG_HandleTypeDef *flag, TIMER_HandleTypeDef *timer);     !!!! burada fonksiyon tanimlandigi zaman error veriyor !!!!
 
 
 #ifdef _cplusplus

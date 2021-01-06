@@ -17,6 +17,7 @@ extern MOTOR_HandleTypeDef rmotor1;
 
 /* Private functions -----------------------------------------------*/
 
+// Motor structtaki degiskenlere deger atama islemi burada yapildi .
 void RAKE_MOTOR_Init(void) {
 	rmotor1.pwmValue_u16 = 0;
 	rmotor1.pwmLastValue_u16 = 0;
@@ -26,6 +27,7 @@ void RAKE_MOTOR_Init(void) {
 	rmotor1.desired.direction = 0;
 }
 
+// Motor sürme fonksiyonu asagida tanimlandi .
 void RAKE_Drive_Motor(float voltageValue, ENCODER_HandleTypeDef *encoder, MOTOR_HandleTypeDef *motor) {
 	motor->pwmValue_u16 = (int)RAKE_Convert(VOLTAGE_TO_PWM, voltageValue);
 	uint32_t motorPin;

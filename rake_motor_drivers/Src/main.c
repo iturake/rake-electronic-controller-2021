@@ -44,6 +44,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+
+//RAKE kütüphaneleri main.c içinde kullanilmak amaciyla main.c içine dahil edildi .
 #include "rake_stm32_encoder_lib.h"
 #include "rake_stm32_uart_lib.h"
 #include "rake_stm32_pid_lib.h"
@@ -70,6 +72,10 @@
 
 /* Private variables ---------------------------------------------------------*/
 
+/*
+	Pin tanimlamalari main.c ye extern edildi .
+	Pinler sonradan degistirilmedigi icin const olarak tanimlandi .
+*/
 extern const uint32_t motorBackward_Pin;
 extern const uint32_t motorForward_Pin;
 extern const uint32_t encoderA_Pin;
@@ -85,6 +91,9 @@ UART_HandleTypeDef huart1;
 
 
 /* USER CODE BEGIN PV */
+
+
+// Typedef strcut tipindeki degerlerden degisken olusturuldu .
 
 ENCODER_HandleTypeDef rencoder1;
 RAKE_UART_HandleTypeDef ruart1;
@@ -105,12 +114,14 @@ static void MX_CAN_Init(void);
 static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
-//Bu fonksiyonlarin görevleri asagi kisimda bulunan USER CODE BEGIN 4 kisminda belirtilmistir
-
-static void RAKE_INIT_Functions(void);
-static void RAKE_START_It(RAKE_UART_HandleTypeDef *uart);
-static void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
-static void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
+/*
+	Prototip fonksiyon tanimlamasi yapildi .
+	Fonksiyonlarin içerikleri USER CODE BEGIN 4 kisminde bulunmaktadir .
+*/
+static void RAKE_INIT_Functions(void);                              //Structlara deger atama islemleri RAKE_INIT fonksiyonlari ile yapildi . 
+static void RAKE_START_It(RAKE_UART_HandleTypeDef *uart);           //Interrupt baslatma fonksiyonu tanimlandi .
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim); 				//Timer interruptlarinin dallandigi fonksiyon buraya eklendi .
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);     				//UART interruptlarinin dallandigi fonksiyon buraya eklendi .
 
 /* USER CODE END PFP */
 
@@ -153,9 +164,9 @@ int main(void)
   MX_CAN_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-	RAKE_INIT_Functions();
-	RAKE_START_It(&ruart1);
-  /* USER CODE END 2 */
+	RAKE_INIT_Functions();       //Structlara deger atama yapan fonksiyon burada cagirildi .
+	RAKE_START_It(&ruart1);      //Interruptlari baslatan fonksiyona burada cagirildi .
+  /* USER CODE END 2 */ 
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -470,6 +481,10 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+/*
+	Interruptlari baslatan fonksiyon içerigi burada yazildi . 
+	Baska bir dosyada kullanilmayacagi icin static olarak tanimlandi .
+*/
 static void RAKE_START_It(RAKE_UART_HandleTypeDef *uart) {
 	HAL_TIM_PWM_Start_IT(&htim3, MOTOR_BACKWARD_Pin);
 	HAL_TIM_PWM_Start_IT(&htim3, MOTOR_FORWARD_Pin);
@@ -482,6 +497,10 @@ static void RAKE_START_It(RAKE_UART_HandleTypeDef *uart) {
 	HAL_UART_Receive_IT(&huart1, uart->rxData, 1);
 }
 
+/*
+	Structlara deger atama islemi yapan fonksiyon icerigi burada yazildi .
+	Baska bir dosyada kullanilmayacagi icin static olarak tanimlandi .
+*/
 static void RAKE_INIT_Functions(void) {
 	RAKE_ENCODER_Init();
 	RAKE_MOTOR_Init();
@@ -492,6 +511,10 @@ static void RAKE_INIT_Functions(void) {
 	RAKE_START_It(&ruart1);
 }
 
+/*
+	Timer interruptlarinin dallandigi fonksiyon burada tanimlandi .
+	Interrupt oldugunda degerlerimizin arttirilmasi saglandi .
+*/
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 		if(htim->Instance == TIM4) {
 			rtimer1.slowStartMotor_u16++;
@@ -502,6 +525,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 		}
 }
 
+/*
+	Uart intterruptlarinin dallandigi fonksiyon burada tanimlandi .
+	Dogru index degerlerin gelmesi durumunda veri almasi saglandi .
+*/
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 	if(huart->Instance == USART1){
 		rflag1.LED.UART_bit = 1;

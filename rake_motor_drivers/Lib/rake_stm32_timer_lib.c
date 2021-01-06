@@ -9,6 +9,7 @@ extern TIMER_HandleTypeDef rtimer1;
 
 /* Private functions -----------------------------------------------*/
 
+// Timer structtaki degiskenlere deger atama islemi burada yapildi .
 void RAKE_TIMER_Init(void) {
 	rtimer1.communicationCANBUS_u16 = 0;
 	rtimer1.communicationUART_u16 = 0;

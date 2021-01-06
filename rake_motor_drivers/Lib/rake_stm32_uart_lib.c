@@ -10,9 +10,14 @@ extern RAKE_UART_HandleTypeDef ruart1;
 
 /* Private functions -----------------------------------------------*/
 
+/*
+	Uart structtaki degiskenlere deger atama islemi burada yapildi .
+	!!!! char tipindeki bazi degiskenlere deger atanmadi !!!!
+*/
 void RAKE_UART_Init(void) {
 	ruart1.txBufferLen = 0;
 }
+
 
 void RAKE_Rx_Motor_Speed(MOTOR_HandleTypeDef *motor, FLAG_HandleTypeDef *flag, RAKE_UART_HandleTypeDef *uart) {
 	if(flag->UART.rxComplete_bool == 1) {
@@ -53,8 +58,8 @@ void RAKE_Tx_Motor_Speed(TIMER_HandleTypeDef *timer, ENCODER_HandleTypeDef *enco
 		ten	= (motorSpeed % 100) / 10;
 		one	= (motorSpeed % 10);
 		
-		uart->txBufferLen = sprintf(uart->txBuffer, "S%d%d%d%dCF",
-															 motorDirection, hun, ten, one);
+		uart->txBufferLen = sprintf(uart->txBuffer, "S%d%d%d%dCF",             // !!!! burada bir warning var buna bakilmasi gerek !!!!
+ 															 motorDirection, hun, ten, one);
 		
 		HAL_UART_Transmit_IT(&huart1, uart->txBuffer, uart->txBufferLen);
 		timer->communicationUART_u16 = 0;

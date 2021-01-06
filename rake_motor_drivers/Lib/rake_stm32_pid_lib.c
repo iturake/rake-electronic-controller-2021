@@ -9,6 +9,7 @@ extern PID_HandleTypeDef rpid1;
 
 /* Private functions -----------------------------------------------*/
 
+// Pid structtaki degiskenlere deger atama islemi burada yapildi .
 void RAKE_PID_Init(void) {
 	rpid1.error = 0;
 	rpid1.lastError = 0;
@@ -21,6 +22,7 @@ void RAKE_PID_Init(void) {
 	rpid1.values.ki = 0.00005;
 }
 
+// Pid hesaplama fonksiyonu burada tanimlandi .
 void RAKE_Pid_Calculation(TIMER_HandleTypeDef *timer, ENCODER_HandleTypeDef *encoder, MOTOR_HandleTypeDef *motor, FLAG_HandleTypeDef *flag, RAKE_UART_HandleTypeDef *uart, PID_HandleTypeDef *PID) {
 	if(timer->pidCalculator_u16 > PID_TIME) {
 		RAKE_Rx_Motor_Speed(motor, flag, uart);

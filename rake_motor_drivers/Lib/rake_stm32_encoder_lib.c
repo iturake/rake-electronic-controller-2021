@@ -5,10 +5,12 @@
 
 /* Extern structures -----------------------------------------------*/
 
-extern ENCODER_HandleTypeDef rencoder1;
+extern ENCODER_HandleTypeDef rencoder1;    // main.c içindeki typedef burada extern edildi .
 
 /* Private functions -----------------------------------------------*/
 
+
+//Encoder structtaki degiskenlere deger atama islemi burada yapildi .
 void RAKE_ENCODER_Init(void) {
 	rencoder1.counter_u32 = 0;
 	rencoder1.measuredDirection_bool = 0;
@@ -16,6 +18,7 @@ void RAKE_ENCODER_Init(void) {
 }
 
 
+//Encoder üzerinden hiz olcum fonksiyonu burada yazildi .
 void RAKE_Measure_Speed(TIMER_HandleTypeDef *timer, FLAG_HandleTypeDef *flag, ENCODER_HandleTypeDef *encoder){
 	if(TIM2->CR1 == 1) {
 		encoder->measuredDirection_bool = 0;
