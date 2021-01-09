@@ -185,7 +185,7 @@ int main(void)
 			RAKE_Pid_Calculation(&rtimer1, &rencoder1, &rmotor1,&rflag1, &ruart1, &rpid1);
 		}
 		RAKE_Tx_Motor_Speed(&rtimer1, &rencoder1, &ruart1);
-		//RAKE_Drive_Led();
+		//RAKE_Drive_Led();--------> !!!! Bu fonksiyon burada çagirildiginda .o dosyalarinda multiply defined hatasi veriyor . 
 		
 		
   }
