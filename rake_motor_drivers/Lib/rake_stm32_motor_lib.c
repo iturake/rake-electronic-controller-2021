@@ -32,8 +32,8 @@ void RAKE_Drive_Motor(float voltageValue, ENCODER_HandleTypeDef *encoder, MOTOR_
 	motor->pwmValue_u16 = (int)RAKE_Convert(VOLTAGE_TO_PWM, voltageValue);
 	uint32_t motorPin;
 	if(motor->desired.direction == 0) {
-		//HAL_GPIO_WritePin(motorBackwardEnable_GPIO_Port, motorBackwardEnable_Pin, 1);
-		//HAL_GPIO_WritePin(motorForwardEnable_GPIO_Port, motorForwardEnable_Pin, 0);
+//		HAL_GPIO_WritePin(MOTOR_BACKWARD_GPIO_Port, MOTOR_BACKWARD_Pin, 1);
+//		HAL_GPIO_WritePin(MOTOR_FORWARD_GPIO_Port, MOTOR_FORWARD_Pin, 0);
 		if(motor->desired.direction != encoder->measuredDirection_bool) {
 		for(int a = motor->pwmValue_u16 ; a > 0; a -= 3)  {
 			__HAL_TIM_SET_COMPARE(&htim3, motorForward_Pin, a);
@@ -42,8 +42,8 @@ void RAKE_Drive_Motor(float voltageValue, ENCODER_HandleTypeDef *encoder, MOTOR_
 	}
 		motorPin = motorBackward_Pin;
 	} else if (motor->desired.direction == 1) {
-		//HAL_GPIO_WritePin(motorBackwardEnable_GPIO_Port, motorBackwardEnable_Pin, 0);
-		//HAL_GPIO_WritePin(motorForwardEnable_GPIO_Port, motorForwardEnable_Pin, 1);
+//		HAL_GPIO_WritePin(MOTOR_BACKWARD_GPIO_Port, MOTOR_BACKWARD_Pin, 0);
+//		HAL_GPIO_WritePin(MOTOR_FORWARD_GPIO_Port, MOTOR_FORWARD_Pin, 1);
 		if(motor->desired.direction != encoder->measuredDirection_bool) {
 		for(int a = motor->pwmValue_u16 ; a > 0; a -= 3)  {
 			__HAL_TIM_SET_COMPARE(&htim3, motorBackward_Pin, a);
@@ -53,6 +53,6 @@ void RAKE_Drive_Motor(float voltageValue, ENCODER_HandleTypeDef *encoder, MOTOR_
 		motorPin = motorForward_Pin;
 	}
 	
-	__HAL_TIM_SET_COMPARE(&htim3, motorBackward_Pin, motor->pwmValue_u16);
+	__HAL_TIM_SET_COMPARE(&htim3, motorPin, motor->pwmValue_u16);
 	motor->pwmLastValue_u16 = motor->pwmValue_u16;
 }

@@ -62,7 +62,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+int x = 500;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -123,6 +123,7 @@ static void RAKE_START_It(RAKE_UART_HandleTypeDef *uart);           //Interrupt 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim); 				//Timer interruptlarinin dallandigi fonksiyon buraya eklendi .
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);     				//UART interruptlarinin dallandigi fonksiyon buraya eklendi .
 
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -166,16 +167,21 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	RAKE_INIT_Functions();       //Structlara deger atama yapan fonksiyon burada cagirildi .
 	RAKE_START_It(&ruart1);      //Interruptlari baslatan fonksiyona burada cagirildi .
+  
+	
   /* USER CODE END 2 */ 
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+		
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		
+//		__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, x);
+//		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+//		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
 		RAKE_Rx_Motor_Speed(&rmotor1, &rflag1, &ruart1);
 		RAKE_Measure_Speed(&rtimer1, &rflag1, &rencoder1);
 		if(rmotor1.desired.RPM_f32 < 1) {
@@ -185,7 +191,15 @@ int main(void)
 			RAKE_Pid_Calculation(&rtimer1, &rencoder1, &rmotor1,&rflag1, &ruart1, &rpid1);
 		}
 		RAKE_Tx_Motor_Speed(&rtimer1, &rencoder1, &ruart1);
-		//RAKE_Drive_Led();--------> !!!! Bu fonksiyon burada çagirildiginda .o dosyalarinda multiply defined hatasi veriyor . 
+//		x = rmotor1.desired.RPM_f32;
+		//RAKE_Drive_Led();--------> !!!! Bu fonksiyon burada çagirildiginda .o dosyalarinda multiply defined hatasi veriyor .
+		
+
+		
+
+		
+		
+		
 		
 		
   }
@@ -486,8 +500,8 @@ static void MX_GPIO_Init(void)
 	Baska bir dosyada kullanilmayacagi icin static olarak tanimlandi .
 */
 static void RAKE_START_It(RAKE_UART_HandleTypeDef *uart) {
-	HAL_TIM_PWM_Start_IT(&htim3, MOTOR_BACKWARD_Pin);
-	HAL_TIM_PWM_Start_IT(&htim3, MOTOR_FORWARD_Pin);
+	HAL_TIM_PWM_Start_IT(&htim3, TIM_CHANNEL_1);
+	HAL_TIM_PWM_Start_IT(&htim3, TIM_CHANNEL_2);
 	
 	HAL_TIM_Encoder_Start_IT(&htim2, encoderA_Pin);
 	HAL_TIM_Encoder_Start_IT(&htim2, encoderB_Pin);
