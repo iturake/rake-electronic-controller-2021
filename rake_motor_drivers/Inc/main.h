@@ -80,10 +80,6 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define MOTOR_BACKWARD_Pin GPIO_PIN_5
-#define MOTOR_BACKWARD_GPIO_Port GPIOA
-#define MOTOR_FORWARD_Pin GPIO_PIN_0
-#define MOTOR_FORWARD_GPIO_Port GPIOB
 #define CLOCK_Pin GPIO_PIN_14
 #define CLOCK_GPIO_Port GPIOB
 #define LATCH_Pin GPIO_PIN_15

@@ -14,12 +14,13 @@ extern "C" {
 
 /* Private defines ----------------------------------------------------------*/
 
+
 // Ileride degismeyecek degerler burada define olarak tanimlandi .
-#define GEAR_RATIO 1
-#define ENCODER_PULS 720
+#define GEAR_RATIO 48
+#define ENCODER_PULS 2048
 
 #define VOLTAGE_MAX 12.0
-#define RPM_MAX 120.0
+#define RPM_MAX 1500
 
 #define PWM_MAX 999
 #define PWM_ZERO 499
@@ -30,6 +31,7 @@ extern "C" {
 #define LED_TIME 49
 #define VELOCITY_TIME 999
 
+#define MILISECOND 1000
 #define SECOND 1000
 #define MINUTE 60
 

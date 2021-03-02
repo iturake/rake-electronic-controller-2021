@@ -6,8 +6,8 @@
 /* Private variables -----------------------------------------------*/
 
 // Pin degerleri degistirilmeyecegi icin const olarak tanimlandi .
-const uint32_t motorBackward_Pin = TIM_CHANNEL_1;
-const uint32_t motorForward_Pin = TIM_CHANNEL_2;
+const uint32_t motorBackward_Pin = TIM_CHANNEL_2;
+const uint32_t motorForward_Pin = TIM_CHANNEL_3;
 const uint32_t encoderA_Pin = TIM_CHANNEL_1;
 const uint32_t encoderB_Pin = TIM_CHANNEL_2;
 

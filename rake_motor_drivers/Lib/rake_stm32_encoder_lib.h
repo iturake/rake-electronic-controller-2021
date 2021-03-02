@@ -16,9 +16,9 @@ extern "C" {
 
 // Encoder struct farkli bir isimle de cagirilabilmek icin typedef olarak tanimlandi 
 typedef struct encoderStruct {
-	uint32_t counter_u32;
+	 uint32_t counter_u32;
 	_Bool measuredDirection_bool;
-	float measuredSpeed_f32;
+	 float measuredSpeed_f32;
 }ENCODER_HandleTypeDef;
 
 /* Private function prototypes -----------------------------------------------*/
