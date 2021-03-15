@@ -20,13 +20,13 @@ extern "C" {
 #define ENCODER_PULS 2048
 
 #define VOLTAGE_MAX 12.0
-#define RPM_MAX 1500
+#define RPM_MAX 350   /// Sistem için bu deger 230 RPM 1:48 redüktör olunca 230*48=11040
 
 #define PWM_MAX 999
 #define PWM_ZERO 499
 #define PWM_MIN 0
 
-#define TX_TIME 99
+#define TX_TIME 999
 #define PID_TIME 9
 #define LED_TIME 49
 #define VELOCITY_TIME 999

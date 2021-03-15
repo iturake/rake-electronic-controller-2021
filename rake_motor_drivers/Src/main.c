@@ -167,10 +167,10 @@ int main(void)
   MX_CAN_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+	
 	RAKE_INIT_Functions();       //Structlara deger atama yapan fonksiyon burada cagirildi .
 	RAKE_START_It(&ruart1);      //Interruptlari baslatan fonksiyona burada cagirildi .
   
-	
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -182,20 +182,16 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
   	
-		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, 400);
-//		RAKE_Rx_Motor_Speed(&rmotor1, &rflag1, &ruart1);
+		RAKE_Rx_Motor_Speed(&rmotor1, &rflag1, &ruart1);
 		RAKE_Measure_Speed(&rtimer1, &rflag1, &rencoder1);
-//		if(rmotor1.desired.RPM_f32 < 1) {
-//			__HAL_TIM_SET_COMPARE(&htim3, motorBackward_Pin, 0);
-//			__HAL_TIM_SET_COMPARE(&htim3, motorForward_Pin, 0);
-//		} else {
-//			RAKE_Pid_Calculation(&rtimer1, &rencoder1, &rmotor1,&rflag1, &ruart1, &rpid1);
-//		}
-//		RAKE_Tx_Motor_Speed(&rtimer1, &rencoder1, &ruart1);
+		if(rmotor1.desired.RPM_f32 < 1) {
+			__HAL_TIM_SET_COMPARE(&htim3, motorBackward_Pin, 0);
+			__HAL_TIM_SET_COMPARE(&htim3, motorForward_Pin, 0);
+		} else {
+			RAKE_Pid_Calculation(&rtimer1, &rencoder1, &rmotor1,&rflag1, &ruart1, &rpid1);
+		}
+		RAKE_Tx_Motor_Speed(&rtimer1, &rencoder1, &ruart1);
 		//RAKE_Drive_Led();--------> !!!! Bu fonksiyon burada çagirildiginda .o dosyalarinda multiply defined hatasi veriyor .
-
-
-		
 		
   }
   /* USER CODE END 3 */
@@ -503,6 +499,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 			rtimer1.ledDriver_u16++;
 		}
 }
+
 
 /* 
 	TIM3 de encoder verisi input capture sayesinde aliniyor.

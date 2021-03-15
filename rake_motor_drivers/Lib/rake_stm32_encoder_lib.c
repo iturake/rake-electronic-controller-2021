@@ -27,7 +27,7 @@ void RAKE_Measure_Speed(TIMER_HandleTypeDef *timer, FLAG_HandleTypeDef *flag, EN
 		encoder->counter_u32 = (uint32_t)(TIM3->CNT);
 		if(timer->velocityCalculator_u16 > VELOCITY_TIME) {
 			TIM3->CNT = 0;
-			encoder->measuredSpeed_f32 = (((float)encoder->counter_u32 / ENCODER_PULS) * (SECOND / (VELOCITY_TIME + 1)) * MINUTE) / GEAR_RATIO;
+			encoder->measuredSpeed_f32 = (((float)encoder_counter / ENCODER_PULS) * (SECOND / (VELOCITY_TIME + 1)) * MINUTE) / GEAR_RATIO;
 			hiz = (((float)encoder_counter / ENCODER_PULS) * (SECOND / (VELOCITY_TIME + 1)) * MINUTE) / GEAR_RATIO;
 			encoder_counter = 0;
 			timer->velocityCalculator_u16 = 0;
@@ -39,7 +39,7 @@ void RAKE_Measure_Speed(TIMER_HandleTypeDef *timer, FLAG_HandleTypeDef *flag, EN
 		encoder->counter_u32 = 65535 - (uint32_t)TIM3->CNT;
 		if(timer->velocityCalculator_u16 > VELOCITY_TIME) {
 			TIM3->CNT = 65535;
-			encoder->measuredSpeed_f32 = (((float)encoder->counter_u32 / ENCODER_PULS) * (SECOND / (VELOCITY_TIME + 1)) * MINUTE) / GEAR_RATIO;
+			encoder->measuredSpeed_f32 = (((float)encoder_counter / ENCODER_PULS) * (SECOND / (VELOCITY_TIME + 1)) * MINUTE) / GEAR_RATIO;
 			hiz = (((float)encoder_counter / ENCODER_PULS) * (SECOND / (VELOCITY_TIME + 1)) * MINUTE) / GEAR_RATIO;
 			encoder_counter = 0;
 			timer->velocityCalculator_u16 = 0;
